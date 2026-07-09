@@ -447,8 +447,17 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   display: grid;
   place-items: center;
   color: rgba(255,255,255,.85);
+  overflow: hidden;
 }
 .work-thumb svg { width: 40%; }
+.work-thumb--photo { background: #eceae3; }
+.work-thumb--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s var(--ease);
+}
+.work-card:hover .work-thumb--photo img { transform: scale(1.05); }
 .work-thumb--1 { background: linear-gradient(135deg,#2952e3,#6c8bf5); }
 .work-thumb--2 { background: linear-gradient(135deg,#1b2436,#3a4a63); }
 .work-thumb--3 { background: linear-gradient(135deg,#0f766e,#34a89c); }
