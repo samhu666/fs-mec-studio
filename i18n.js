@@ -72,7 +72,7 @@ const translations = {
     'team.title': '團隊成員',
     'team.desc': '目前由胡○淳負責網站整體規劃與排版設計。',
     'team.member1.role': '網站設計 / 全案統籌',
-    'team.member1.desc': '負責網站整體規劃與排版設計。',
+    'team.member1.desc': '從網站設計、前端開發、內容規劃到客戶溝通，一手包辦。',
 
     'testimonials.title': '合作夥伴怎麼說',
     'testimonials.quote1': '「從建模到交付都很有效率，工程圖標註也很清楚，幫我們省下不少溝通成本。」',
@@ -181,7 +181,7 @@ const translations = {
     'team.title': 'Our Team',
     'team.desc': 'Website planning and layout design is currently led by 胡○淳.',
     'team.member1.role': 'Website Design / Project Lead',
-    'team.member1.desc': 'Responsible for overall website planning and layout design.',
+    'team.member1.desc': 'Handles everything from website design and front-end development to content planning and client communication.',
 
     'testimonials.title': 'What Our Partners Say',
     'testimonials.quote1': '"Efficient from modeling to delivery, with clear drawing annotations that saved us a lot of communication overhead."',

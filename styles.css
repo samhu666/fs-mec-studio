@@ -368,6 +368,22 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 .section { padding: 128px 0; }
 .section-alt { background: var(--bg-alt); }
 
+.section-metal {
+  position: relative;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.4) 0 1px, transparent 1px 3px),
+    linear-gradient(115deg, #d6dadd 0%, #eef0f2 18%, #b9bec3 38%, #e9ebed 55%, #c7cbcf 74%, #f0f1f3 90%, #d2d6d9 100%);
+}
+.section-metal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.35), transparent 40%);
+  pointer-events: none;
+}
+.section-metal .section-title,
+.section-metal .section-desc { position: relative; }
+
 .section-tag {
   font-family: var(--font-en);
   font-size: 12.5px;
@@ -551,7 +567,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   gap: 24px;
 }
 .team-grid.team-grid--single {
-  grid-template-columns: minmax(240px, 320px);
+  grid-template-columns: minmax(280px, 600px);
   justify-content: center;
 }
 .team-card {
@@ -566,6 +582,21 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   transform: translateY(-6px);
   box-shadow: 0 24px 40px -26px rgba(20, 22, 26, .22);
 }
+.team-card--profile {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  text-align: left;
+  padding: 44px 48px;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 24px 48px -24px rgba(20, 22, 26, .3);
+}
+.team-card--profile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 52px -24px rgba(20, 22, 26, .35);
+}
 .team-avatar {
   width: 68px; height: 68px;
   margin: 0 auto 18px;
@@ -577,6 +608,12 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   font-size: 22px;
   color: #fff;
   background: linear-gradient(135deg, var(--avatar-a), var(--avatar-b));
+  flex-shrink: 0;
+}
+.team-card--profile .team-avatar {
+  width: 100px; height: 100px;
+  margin: 0;
+  font-size: 34px;
 }
 .team-card h3 {
   font-family: var(--font-cn);
@@ -584,16 +621,19 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   font-weight: 700;
   margin-bottom: 4px;
 }
+.team-card--profile h3 { font-size: 21px; }
 .team-role {
   font-size: 12.5px;
   font-weight: 600;
   color: var(--accent);
   margin-bottom: 12px;
 }
+.team-card--profile .team-role { font-size: 14px; }
 .team-desc {
   font-size: 13.5px;
   color: var(--ink-soft);
 }
+.team-card--profile .team-desc { font-size: 15px; }
 
 /* ---------- quotes ---------- */
 .quote-grid {
@@ -797,6 +837,11 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   .service-grid { grid-template-columns: 1fr; }
   .process-list { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
+  .team-card--profile {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 28px;
+  }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
