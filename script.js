@@ -311,6 +311,7 @@ function renderPaperTable(paper) {
     for (const key of STRATEGY_ORDER) {
       let value, ret, posLabel;
       if (key === "dca") {
+        if (!c.dca) continue;
         value = c.dca.qty * p;
         ret = c.dca.invested ? (value / c.dca.invested - 1) * 100 : null;
         posLabel = c.dca.qty > 0 ? "持有中" : "—";
