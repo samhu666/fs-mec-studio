@@ -3,16 +3,17 @@
 =================================================================== */
 
 :root {
-  --bg: #fafaf8;
-  --bg-alt: #f2f1ed;
-  --surface: #ffffff;
-  --ink: #14161a;
-  --ink-soft: #55585f;
-  --ink-faint: #9a9da3;
-  --line: #e4e3dd;
-  --accent: #2952e3;
+  --bg: #0a0c10;
+  --bg-alt: #12151b;
+  --surface: #1a1e26;
+  --ink: #f2f3f5;
+  --ink-soft: #a6abb5;
+  --ink-faint: #656b76;
+  --line: #262b34;
+  --accent: #5b7fff;
+  --accent-hover: #7c9bff;
   --accent-ink: #ffffff;
-  --accent-soft: #e8edfd;
+  --accent-soft: rgba(91, 127, 255, .16);
 
   --font-cn: 'Noto Sans TC', sans-serif;
   --font-en: 'Inter', sans-serif;
@@ -79,7 +80,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 }
 .site-header.scrolled {
   padding: 12px 0;
-  background: rgba(250, 250, 248, .78);
+  background: rgba(10, 12, 16, .78);
   backdrop-filter: blur(14px) saturate(140%);
   box-shadow: 0 1px 0 var(--line);
 }
@@ -143,14 +144,14 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 .nav-link:hover::after { width: 100%; }
 
 .nav-cta {
-  background: var(--ink);
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-ink);
   padding: 9px 18px;
   border-radius: 100px;
   font-weight: 600;
 }
 .nav-cta::after { display: none; }
-.nav-cta:hover { background: var(--accent); color: #fff; }
+.nav-cta:hover { background: var(--accent-hover); color: var(--accent-ink); }
 
 .lang-toggle {
   font-family: var(--font-en);
@@ -212,6 +213,26 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 10%, transparent 75%);
   opacity: .55;
+}
+
+.proximity-grid {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 10%, transparent 75%);
+}
+
+.proximity-dot {
+  position: absolute;
+  width: 5px; height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: #9a9da3;
+  opacity: .4;
+  will-change: transform, opacity, background-color;
+}
+
+@media (max-width: 720px), (hover: none) {
+  .proximity-grid { display: none; }
 }
 
 .hero-blueprint {
@@ -277,13 +298,13 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   transition: transform .25s var(--ease), background .25s, color .25s, border-color .25s, box-shadow .25s;
 }
 .btn-primary {
-  background: var(--ink);
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 .btn-primary:hover {
-  background: var(--accent);
+  background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -10px rgba(41, 82, 227, .55);
+  box-shadow: 0 12px 24px -10px rgba(91, 127, 255, .55);
 }
 .btn-ghost {
   background: transparent;
@@ -383,6 +404,12 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 }
 .section-metal .section-title,
 .section-metal .section-desc { position: relative; }
+
+/* 這個區塊刻意保留淺色金屬材質背景，文字要固定用深色，
+   不能跟著整體深色主題一起變亮（否則淺字疊淺底會看不見）。 */
+.section-metal .section-tag { position: relative; color: #2952e3; }
+.section-metal .section-title { color: #14161a; }
+.section-metal .section-desc { color: #4b4f58; }
 
 .section-tag {
   font-family: var(--font-en);
@@ -484,7 +511,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 }
 .work-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 40px -24px rgba(20, 22, 26, .22);
+  box-shadow: 0 24px 40px -24px rgba(91, 127, 255, .3);
 }
 .work-thumb {
   aspect-ratio: 16/9;
@@ -494,7 +521,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   overflow: hidden;
 }
 .work-thumb svg { width: 40%; }
-.work-thumb--photo { background: #eceae3; }
+.work-thumb--photo { background: var(--surface); }
 .work-thumb--photo img {
   width: 100%;
   height: 100%;
@@ -580,7 +607,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 }
 .team-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 40px -26px rgba(20, 22, 26, .22);
+  box-shadow: 0 24px 40px -26px rgba(91, 127, 255, .3);
 }
 .team-card--profile {
   display: flex;
@@ -592,6 +619,9 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,.7);
   box-shadow: 0 24px 48px -24px rgba(20, 22, 26, .3);
+  /* 卡片本身刻意維持淺色霧面玻璃質感（疊在金屬材質背景上），
+     文字要固定用深色，不能跟著整體深色主題變亮。 */
+  color: #14161a;
 }
 .team-card--profile:hover {
   transform: translateY(-4px);
@@ -633,7 +663,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
   font-size: 13.5px;
   color: var(--ink-soft);
 }
-.team-card--profile .team-desc { font-size: 15px; }
+.team-card--profile .team-desc { font-size: 15px; color: #55585f; }
 
 /* ---------- quotes ---------- */
 .quote-grid {
@@ -661,7 +691,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 }
 
 /* ---------- contact ---------- */
-.section-contact { background: var(--ink); color: #fff; }
+.section-contact { background: var(--bg-alt); color: var(--ink); }
 .section-contact .section-tag { color: #7f9bff; }
 .section-contact .section-desc { color: rgba(255,255,255,.65); }
 
@@ -737,7 +767,7 @@ h1, h2, h3, h4, p, dl, dd, dt, blockquote, figure { margin: 0; }
 .form-row select option { color: #14161a; }
 
 .contact-form .btn-primary { background: var(--accent); margin-top: 4px; }
-.contact-form .btn-primary:hover { background: #4467ea; box-shadow: 0 12px 24px -10px rgba(41,82,227,.7); }
+.contact-form .btn-primary:hover { background: var(--accent-hover); box-shadow: 0 12px 24px -10px rgba(91,127,255,.7); }
 
 .form-note {
   font-size: 13.5px;
